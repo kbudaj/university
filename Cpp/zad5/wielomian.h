@@ -11,6 +11,7 @@ class Wielomian {
     vector<double> a;
 
     void set(int index, double val);
+    double get(int index) const;
 
     public:
     struct proxy {
@@ -28,10 +29,17 @@ class Wielomian {
     //Wielomian(Wielomian&& w);
     int stopien() {
         return this->n;
-    } 
+    }
     proxy operator[](int i);
     friend ostream& operator<<(ostream& wy, const Wielomian& w);
     friend istream& operator>>(istream& we, Wielomian& w);
+    friend Wielomian operator+(const Wielomian& w1, const Wielomian& w2);
+    friend Wielomian operator-(const Wielomian& w1, const Wielomian& w2);
+    friend Wielomian operator*(const Wielomian& w1, const Wielomian& w2);
+    Wielomian& operator+=(const Wielomian& w);
+    Wielomian& operator-=(const Wielomian& w);
+    Wielomian& operator*=(const Wielomian& w);
+    double operator()(int pkt);
 };
 
 #endif
