@@ -83,7 +83,51 @@ ostream& operator<<(ostream& wy, const Wielomian& w) {
     }
 
     return wy;
+}
 
+istream& operator>>(istream& we, Wielomian& w) {
+    // Przyklad
+    // -3 2 9 12   =  (12)x^3 + (9)x^2 + (2)x + -3
+    int new_n;
+    double new_wsp;
+    cout << "Stopien wielomianu: ";
+    we >> new_n;
+
+    while (we.fail() || new_n < 0) {
+        cerr << "Stopien wielomianu musi byc liczba naturalna: ";
+        we.clear();
+        we.ignore(256,'\n');
+        we >> new_n;
+    }
+    w.n = new_n;
+
+    int i = 0;
+    while (i<w.n) {
+        cout << "Wspolczynnik " << i << " : ";
+        we >> new_wsp;
+        while (we.fail()) {
+            cerr << "Wspolczynnik musi byc liczba: ";
+            we.clear();
+            we.ignore(256,'\n');
+            we >> new_wsp;
+        }
+        w.a.push_back(new_wsp);
+        i++;
+    }
+
+    cout << "Wspolczynnik " << i << " : ";
+    we >> new_wsp;
+    while (we.fail() || new_wsp == 0) {
+        cerr << "Stopien wielomianu przy najwyzszej " << endl;
+        cerr << "potedze, musi byc liczba != 0" << endl;
+        cerr << "Wspolczynnik " << i << " : ";
+        we.clear();
+        we.ignore(256,'\n');
+        we >> new_wsp;
+    }
+    w.a.push_back(new_wsp);
+
+    return we;
 }
 
 // Operacje
@@ -106,18 +150,11 @@ Wielomian operator+(const Wielomian& w1, const Wielomian& w2) {
 
     int i = 0;
     while (i<smaller_size) {
-        //TODO remove debug
-        cout << "i: " << i << " | ";
-        cout << "w1: " << w1.a[i] << " w2:" << w2.a[i] << endl;
-
         new_wsp[i] = w1.get(i) + w2.get(i);
         i++;
     }
 
     while (i<new_n+1) {
-        //TODO remove debug
-        cout << "odpalony diff" << endl;
-
         new_wsp[i] = bigger->get(i);
         i++;
     }
@@ -128,37 +165,27 @@ Wielomian operator+(const Wielomian& w1, const Wielomian& w2) {
 Wielomian operator-(const Wielomian& w1, const Wielomian& w2) {
     int new_n; // Stopien nowego wielomianu
     int smaller_size;
-    const Wielomian* smaller;
     const Wielomian* bigger;
 
     if (w1.n > w2.n) {
         new_n = w1.n;
         smaller_size = static_cast<int>(w2.a.size());
         bigger = &w1;
-        smaller = &w2;
     } else {
         new_n = w2.n;
         smaller_size = static_cast<int>(w1.a.size());
         bigger = &w2;
-        smaller = &w1;
     }
 
     double new_wsp[new_n+1]; // Tablica nowych wspolczynnikow
 
     int i = 0;
     while (i<smaller_size) {
-        //TODO remove debug
-        cout << "i: " << i << " | ";
-        cout << "w1: " << bigger->a[i] << " w2:" << smaller->a[i] << endl;
-
         new_wsp[i] = w1.get(i) - w2.get(i);
         i++;
     }
 
     while (i<new_n+1) {
-        //TODO remove debug
-        cout << "odpalony diff" << endl;
-
         new_wsp[i] = bigger->get(i);
         i++;
     }
@@ -203,7 +230,6 @@ double Wielomian::operator()(int pkt){
     double result = this->get(this->n);
     for (int i=this->n-1; i>=0; i--) {
         result = result*pkt + this->get(i);
-        cout << this->get(i) << endl;
     }
     return result;
 }
