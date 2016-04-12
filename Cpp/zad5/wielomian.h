@@ -25,8 +25,7 @@ class Wielomian {
     Wielomian(int st=0, double wsp=1.0);
     Wielomian(int st, double wsp[]);
     Wielomian(initializer_list<double> wsp);
-    //Wielomian(const Wielomian& w);
-    //Wielomian(Wielomian&& w);
+
     int stopien() {
         return this->n;
     }

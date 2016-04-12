@@ -14,9 +14,6 @@ void Wielomian::set(int index, double val) {
 }
 
 double Wielomian::get(int index) const {
-    // if (index < 0 || (index > static_cast<int>(this->a.size()-1))) {
-    //     throw out_of_range("No such index");
-    // }
     return this->a[index];
 }
 
