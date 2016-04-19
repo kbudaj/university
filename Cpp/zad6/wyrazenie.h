@@ -5,14 +5,15 @@
 #ifndef ZAD6_WYRAZENIE_H
 #define ZAD6_WYRAZENIE_H
 
-#include <string>;
+#include <string>
 
 class Wyrazenie {
-    virtual ~Wyrazenie();
+public:
+//    virtual ~Wyrazenie();
 
     virtual double oblicz();
 
-    virtual string opis();
+    virtual std::string opis();
 };
 
 #endif //ZAD6_WYRAZENIE_H
