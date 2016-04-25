@@ -13,6 +13,7 @@ public:
     Liczba(double l);
     virtual double oblicz();
     virtual std::string opis();
+    double getValue();
 };
 
 #endif //ZAD6_LICZBA_H

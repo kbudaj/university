@@ -5,17 +5,20 @@
 #include <iostream>
 #include "liczba.h"
 
-Liczba::Liczba(double l) {
-    this->liczba = l;
-}
+Liczba::Liczba(double l) : liczba(l) {}
 
 double Liczba::oblicz() {
-    std::cout << "Wynik liczby: " << std::endl;
+    return this->liczba;
 }
 
 std::string Liczba::opis() {
     std::cout << "Opis liczby: " << std::endl;
 }
+
+double Liczba::getValue() {
+    return this->liczba;
+}
+
 
 
 

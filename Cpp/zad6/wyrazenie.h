@@ -9,11 +9,8 @@
 
 class Wyrazenie {
 public:
-//    virtual ~Wyrazenie();
-
-    virtual double oblicz();
-
-    virtual std::string opis();
+    virtual double oblicz() = 0;
+    virtual std::string opis() = 0;
 };
 
 #endif //ZAD6_WYRAZENIE_H

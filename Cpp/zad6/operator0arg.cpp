@@ -6,8 +6,8 @@
 #include <iterator>
 #include "operator0arg.h"
 
-Operator0arg::Operator0arg(std::string arg) {
-    this->
+std::string Operator0arg::opis() {
+    return "Opis 0arg: " + std::to_string(oblicz());
 
 }
 
