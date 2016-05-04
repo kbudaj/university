@@ -10,7 +10,8 @@
 #include <map>
 #include <vector>
 
-using namespace std;
+namespace obliczenia {
+
 class Rational {
     // Numinator, Denominator
     int num, den;
@@ -45,5 +46,5 @@ public:
 
 
 };
-
+}
 #endif //ZAD7_RATIONAL_H

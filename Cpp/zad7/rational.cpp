@@ -3,6 +3,8 @@
 
 using namespace std;
 
+namespace obliczenia {
+
 void Rational::setNum(int num) {
     this->num = num;
 }
@@ -178,4 +180,6 @@ Rational::operator int() const {
     double b = this->den;
     double result = a/b;
     return round(result);
+}
+
 }
