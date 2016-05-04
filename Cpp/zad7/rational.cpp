@@ -3,7 +3,7 @@
 
 using namespace std;
 
-namespace obliczenia {
+namespace calculations {
 
 void Rational::setNum(int num) {
     this->num = num;

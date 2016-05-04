@@ -10,7 +10,7 @@
 #include <map>
 #include <vector>
 
-namespace obliczenia {
+namespace calculations {
 
 class Rational {
     // Numinator, Denominator

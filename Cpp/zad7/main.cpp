@@ -2,7 +2,7 @@
 #include "rational.h"
 
 using namespace std;
-using namespace obliczenia;
+using namespace calculations;
 
 int main() {
     // Test Constructors
