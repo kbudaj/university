@@ -31,7 +31,7 @@ public:
     Rational(const Rational& obj) = default;
 
     // Arithmetics
-    friend ostream& operator<<(ostream& out, const Rational& r);
+    friend std::ostream& operator<<(std::ostream& out, const Rational& r);
     friend Rational operator+(const Rational& a, const Rational& b);
     friend Rational operator-(const Rational& a, const Rational& b);
     friend Rational operator*(const Rational& a, const Rational& b);
