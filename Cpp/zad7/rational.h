@@ -6,20 +6,17 @@
 #define ZAD7_RATIONAL_H
 
 #include <cmath>
+#include <iostream>
+#include <set>
+
+using namespace std;
 
 class Rational {
     // Numinator, Denominator
     int num, den;
-    // Operations
-    friend Rational operator+(const Rational& a, const Rational& b);
-    friend Rational operator-(const Rational& a, const Rational& b);
-    friend Rational operator*(const Rational& a, const Rational& b);
-    friend Rational operator*(const Rational& a, const Rational& b);
-    friend Rational operator/(const Rational& a, const Rational& b);
-    //friend Rational operator-();
-    //friend Rational operator!() const;
+
     void simplify();
-    int smaller(int& a, int& b);
+    int smaller(int a, int b);
 
 public:
     Rational(int num);
@@ -28,6 +25,25 @@ public:
     void setDen(int den);
     int getNum();
     int getDen();
+
+    Rational& operator=(const Rational& obj) = default;
+    Rational(const Rational& obj) = default;
+
+    // Arithmetics
+    friend ostream& operator<<(ostream& out, const Rational& r);
+    friend Rational operator+(const Rational& a, const Rational& b);
+    friend Rational operator-(const Rational& a, const Rational& b);
+    friend Rational operator*(const Rational& a, const Rational& b);
+    friend Rational operator/(const Rational& a, const Rational& b);
+    friend Rational operator-(const Rational& a);
+    friend Rational operator!(const Rational& a);
+
+    // Cast to double
+    operator double() const;
+    // Cast to int
+    operator int() const;
+
+
 };
 
 #endif //ZAD7_RATIONAL_H
