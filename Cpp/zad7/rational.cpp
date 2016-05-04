@@ -66,21 +66,61 @@ Rational::Rational(int num, int den) {
 }
 
 ostream& operator<<(ostream& out, const Rational& r) {
-    // out << r.num;
-    // if (r.den != 1) {
-    //     out << "/" << r.den;
-    // }
-    // return out;
-    // double a, b;
-    // int rest, k;
-    // set<int> record;
-    //
-    // for (int i=0; i<100; i++) {
-    //     k = a/b;
-    //     cout << k;
-    //     out << k;
-    //     break;
-    // }
+    double a = r.num;
+    double b = r.den;
+    int rest, whole;
+    bool periodic;
+
+    map<int, int> record;
+    vector<int> number;
+
+
+    int i, spot;
+    for (i=0; i<100; i++) {
+        // Limited tries to find period
+        whole = (int)a/b;
+        rest = a - whole*b;
+        number.push_back(whole);
+
+        if (rest == 0) {
+            // No period
+            periodic = false;
+            break;
+        }
+
+        if (record.find(rest) == record.end()) {
+            record[rest] = i;
+        } else {
+            // Period found
+            spot = record.find(rest)->second;
+            periodic = true;
+            break;
+        }
+        a = rest * 10;
+    }
+
+    if (periodic) {
+        for (int b=0; b<=spot; b++) {
+            out << number[b];
+            if (number[b] == number.front()) {
+                out << ".";
+            }
+        }
+
+        spot++;
+        out << "(";
+        for (spot; spot <= i; spot++) {
+            out << number[spot];
+        }
+        out << ")";
+    } else {
+        for (auto n : number) {
+            out << n;
+            if (n == number.front()) {
+                out << ".";
+            }
+        }
+    }
 
     return out;
 }

@@ -7,10 +7,10 @@
 
 #include <cmath>
 #include <iostream>
-#include <set>
+#include <map>
+#include <vector>
 
 using namespace std;
-
 class Rational {
     // Numinator, Denominator
     int num, den;

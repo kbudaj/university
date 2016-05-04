@@ -4,7 +4,6 @@
 using namespace std;
 
 int main() {
-    /*
     // Test Constructors
     cout << "  ---------------" << endl;
     cout << "--| Constructors |--" << endl;
@@ -102,15 +101,19 @@ int main() {
     cout << c << " -> " << (int)c << endl;
     cout << d << " -> " << (int)d << endl;
     cout << test2 << " -> " << (int)test2 << endl;
-    cout << test3 << " -> " << (int)test3 << endl;
+    cout << test3 << " -> " << (int)test3 << endl << endl;
+
+    {
+        cout << "--( Rational output to real number with period )--" << endl;
+        Rational r1(4, 9);
+        cout << r1 << endl;
+        Rational r2(12, 5);
+        cout << r2 << endl;
+        Rational r3(133, 74);
+        cout << r3 << endl;
+    }
 
     // Uncomment to test exception
-    Rational bad(3, 0);
-    */
-
-    Rational t(1, 3);
-    cout << t << endl;
-    Rational t2(12, 2);
-    cout << t2 << endl;
+    // Rational bad(3, 0);
     return 0;
 }
