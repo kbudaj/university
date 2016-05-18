@@ -27,5 +27,11 @@ int main() {
     cout << "search 30: ";
     cout << b.search(30) << endl;
 
+    cout << "delete: 1" << endl;
+    b.remove(1);
+
+    b.print();
+    cout << "search 1: ";
+    cout << b.search(1) << endl;
     return 0;
 }
